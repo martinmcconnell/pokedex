@@ -14,12 +14,7 @@ type cliCommand struct {
 }
 
 func main() {
-	scanner := bufio.NewScanner(os.Stdin)
-	scanner.Scan()
-	fmt.Print(" > ")
-	text := scanner.Text()
-
-	fmt.Println("You wrote", text)
+	startRepl()
 }
 
 return map[string]cliCommand{
