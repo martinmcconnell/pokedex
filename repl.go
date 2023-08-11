@@ -20,16 +20,36 @@ func startRepl() {
 			continue
 		}
 
-		command := cleaned[0]
-		switch command {
-		case "exit":
-			os.Exit(0)
-
-		case "help":
-
-		default:
-			fmt.Println("You wrote", text)
+		commandName := cleaned[0]
+		availableCommands := getCommands()
+		command, ok := availableCommands[commandName]
+		if !ok {
+			fmt.Printf("invalid invocation \"%v\"\n", text)
+			continue
 		}
+
+		command.callback()
+	}
+}
+
+type cliCommand struct {
+	name        string
+	description string
+	callback    func()
+}
+
+func getCommands() map[string]cliCommand {
+	return map[string]cliCommand{
+		"help": {
+			name:        "help",
+			description: "Displays this help message",
+			callback:    commandHelp,
+		},
+		"exit": {
+			name:        "exit",
+			description: "Exit the cli",
+			callback:    commandExit,
+		},
 	}
 }
 
