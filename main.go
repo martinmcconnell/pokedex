@@ -1,12 +1,5 @@
 package main
 
-import (
-	"bufio"
-	"fmt"
-	"os"
-)
-
-
 type cliCommand struct {
 	name        string
 	description string
@@ -17,6 +10,7 @@ func main() {
 	startRepl()
 }
 
+/*
 return map[string]cliCommand{
     "help": {
         name:        "help",
@@ -29,3 +23,4 @@ return map[string]cliCommand{
         callback:    commandExit,
     },
 }
+*/
