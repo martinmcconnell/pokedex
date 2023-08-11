@@ -20,7 +20,16 @@ func startRepl() {
 			continue
 		}
 
-		fmt.Println("You wrote", text)
+		command := cleaned[0]
+		switch command {
+		case "exit":
+			os.Exit(0)
+
+		case "help":
+
+		default:
+			fmt.Println("You wrote", text)
+		}
 	}
 }
 
