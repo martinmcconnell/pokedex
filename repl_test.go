@@ -21,14 +21,14 @@ func TestCleanInput(t *testing.T) {
 	for _, cs := range cases {
 		actual := cleanInput(cs.input)
 		if len(actual) != len(cs.expected) {
-			t.Errorf("Incorrect length: %v", len(actual), len(cs.expected))
+			t.Errorf("Incorrect length: %v + %v", len(actual), len(cs.expected))
 			continue
 		}
 		for i := range actual {
 			actualWOrd := actual[i]
 			expectedWord := cs.expected[i]
 			if actualWOrd != expectedWord {
-				t.Errorf("%v", actualWOrd, expectedWord)
+				t.Errorf("%v is not %v", actualWOrd, expectedWord)
 			}
 		}
 	}

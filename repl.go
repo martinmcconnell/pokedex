@@ -11,9 +11,14 @@ func startRepl() {
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for {
-		scanner.Scan()
 		fmt.Print(" > ")
+		scanner.Scan()
 		text := scanner.Text()
+
+		cleaned := cleanInput(text)
+		if len(cleaned) == 0 {
+			continue
+		}
 
 		fmt.Println("You wrote", text)
 	}
